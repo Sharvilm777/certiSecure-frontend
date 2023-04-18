@@ -16,23 +16,26 @@
         font-family: "Raleway", sans-serif;
       }
       body {
-        background-image: url("photos/background_image.jpg");
+        /* background-image: url("photos/background_image.jpg"); */
+        background-image: url("https://www.sagatraining.ca/wp-content/uploads/2018/10/background-images-for-login-form-8.jpg");
         color: white;
       }
       .container {
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 80vh;
+        height: 70vh;
         flex-direction: column;
       }
       #certificate-add-file {
+        font-size: large;
         padding: 10px;
         border: 2px solid black;
         border-radius: 5px;
       }
       #upload_certificate {
         margin-top: 20px;
+        font-size: large;
         padding: 5px 10px;
         border: 1px solid black;
         border-radius: 5px;
@@ -43,6 +46,9 @@
         border-radius: 4px;
         transition: 1s;
         font-family: "Raleway", sans-serif;
+      }
+      .heading{
+        font-size: large;
       }
     </style>
   </head>
@@ -75,5 +81,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
     <script type="module" src="index.js"></script>
+    <script>
+      var isadmin=false;
+      if (!isadmin) {
+  // Redirect to the protected page
+  window.location.href = '/client/login.html';
+} 
+    </script>
   </body>
 </html>

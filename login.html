@@ -7,12 +7,14 @@
       body {
         background-image: url("https://www.sagatraining.ca/wp-content/uploads/2018/10/background-images-for-login-form-8.jpg");
         background-size: cover;
-        display: flex;
+        
+      }
+.form_wrapper{
+  display: flex;
         align-items: center;
         justify-content: center;
-        height: 100vh;
-      }
-
+        margin-top: 40px;
+}
       h1 {
         text-align: center;
       }
@@ -63,6 +65,7 @@
     </style>
   </head>
   <body>
+
     <ul class="background">
       
         <div class="logo">
@@ -80,6 +83,7 @@
       <div class="headTag"><a id="i3">CERTI-SECURE(Ensure Trust In Digital Certificates)</a></div>
       
     </ul>
+ <div class="form_wrapper">
     <form>
       <h1>Login</h1>
       <label for="username"><b>Email</b></label>
@@ -97,7 +101,8 @@
       />
       <a href="http://127.0.0.1:5500/loginpage/index2.html">Forgot password?</a>
       <button type="submit">Login</button>
-      <p>Don't have an account? <a href="#" class="signup-link">Sign up</a></p>
+      <p>Don't have an account? <a href="signUp.html" class="signup-link">Sign up</a></p>
     </form>
+    </div>
   </body>
 </html>

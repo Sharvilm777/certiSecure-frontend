@@ -11,41 +11,7 @@
     />
     <link rel="stylesheet" href="HomePage.css" />
     <link rel="Navbar StyleSheet" href="navbar.css" />
-    <style>
-      * {
-        font-family: "Raleway", sans-serif;
-      }
-      body {
-        background-image: url("photos/background_image.jpg");
-        color: white;
-      }
-      .container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 80vh;
-        flex-direction: column;
-      }
-      #certificate-verify-file {
-        padding: 10px;
-        border: 2px solid black;
-        border-radius: 5px;
-      }
-      #verify_btn {
-        margin-top: 20px;
-        padding: 5px 10px;
-      }
-      input[type="file"]::file-selector-button {
-        border: 1px solid #000000;
-        padding: 0.2em 0.4em;
-        border-radius: 4px;
-        transition: 1s;
-        font-family: "Raleway", sans-serif;
-      }
-      .title {
-        text-align: center;
-      }
-    </style>
+    <link rel="stylesheet" href="verfiyPage.css">
   </head>
   <body>
     <ul class="background">
@@ -65,16 +31,38 @@
       <div class="headTag"><a id="i3">CERTI-SECURE(Ensure Trust In Digital Certificates)</a></div>
       
     </ul>
+  
+
     <div class="container" id="top">
+      <div class="selectionContainer">
+        <select id="user-type">
+          <option value="student">Student</option>
+          <option value="employee">Employee</option>
+        </select>
+      
+      <div id="form-container">
+        <form class="formContent">
+          <label for="student-name">Student Name:</label>
+          <input type="text" id="student-name" name="studentName" required="true">
+
+          <label for="student-id">Student ID:</label>
+          <input type="text" id="student-id" name="studentId" required="true">
+
+          <button id="submitBtn" type="submit">Submit</button>
+        </form>
+      </div>
+      </div>
+<div class="verifyForm displayNone">
       <div class="heading">
         <h3>Verify your certificate here</h3>
       </div>
       <input type="file" id="certificate-verify-file" />
       <button id="verify_btn">Verify Certificate</button>
       <p id="result"></p>
+      </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/web3@1.4.0/dist/web3.min.js"></script>
-    <script type="module" src="index.js"></script>
+    <script type="module" src="verifyCertificate.js"></script>
+    
   </body>
 </html>

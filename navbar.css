@@ -1,5 +1,6 @@
 body {
-  background-image: url("photos/background_image.jpg");
+  background-image: url("https://www.sagatraining.ca/wp-content/uploads/2018/10/background-images-for-login-form-8.jpg");
+  background-size: cover;
 }
 ul.background {
   margin: 0;

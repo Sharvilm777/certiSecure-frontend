@@ -1,0 +1,79 @@
+* {
+  font-family: "Raleway", sans-serif;
+}
+body {
+  /* background-image: url("photos/background_image.jpg"); */
+  background-image: url("https://www.sagatraining.ca/wp-content/uploads/2018/10/background-images-for-login-form-8.jpg");
+  color: rgb(0, 0, 0);
+}
+
+.container {
+  font-size: larger;
+  display: flex;
+
+  justify-content: center;
+
+  flex-direction: column;
+  background-color: #d6eaf8;
+  opacity: 70%;
+  padding: 50px;
+  border-radius: 50px;
+  width: 400px;
+  height: 300px;
+  margin: auto;
+  margin-top: 40px;
+}
+#certificate-verify-file {
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: medium;
+}
+#verify_btn {
+  margin-top: 20px;
+  padding: 5px 10px;
+  font-size: large;
+}
+input[type="file"]::file-selector-button {
+  border: 1px solid #000000;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  transition: 1s;
+  font-family: "Raleway", sans-serif;
+  font-size: larger;
+}
+.heading {
+  text-align: center;
+  font-size: larger;
+}
+.displayNone {
+  display: none;
+}
+.selectionContainer {
+  position: relative;
+  display: inline-block;
+}
+#user-type {
+  position: absolute;
+  top: -80px;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+}
+.formContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+#student-name,
+#employee-name {
+  padding: 10px;
+}
+#student-id,
+#company-name {
+  padding: 10px;
+}
+#submitBtn {
+  padding: 10px;
+  margin: 10px;
+}
