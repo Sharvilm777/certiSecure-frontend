@@ -15,7 +15,7 @@ body {
 
   flex-direction: column;
   background-color: #d6eaf8;
-  opacity: 75%;
+  opacity: 85%;
   padding: 50px;
   border-radius: 50px;
   width: 400px;
@@ -55,7 +55,7 @@ input[type="file"]::file-selector-button {
 }
 #user-type {
   position: absolute;
-  top: -80px;
+  top: -60px;
   left: 0;
   width: 100%;
   padding: 10px;
@@ -68,12 +68,18 @@ input[type="file"]::file-selector-button {
 #student-name,
 #employee-name {
   padding: 10px;
+  margin: 10px;
 }
 #student-id,
 #company-name {
   padding: 10px;
+  margin: 10px;
 }
 #submitBtn {
   padding: 10px;
   margin: 10px;
+  border: 2px solid black;
+  border-radius: 7px;
+  width: 200px;
+  margin-left: 100px;
 }

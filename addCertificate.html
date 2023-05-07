@@ -19,7 +19,7 @@
         /* background-image: url("photos/background_image.jpg"); */
         background-image: url("https://www.sagatraining.ca/wp-content/uploads/2018/10/background-images-for-login-form-8.jpg");
         color: white;
-        opacity:50%
+     
       }
       .container {
         display: flex;
@@ -51,6 +51,9 @@
       .heading{
         font-size: large;
       }
+      .certificateHash{
+        margin-top: 10px;
+      }
     </style>
   </head>
 
@@ -65,6 +68,7 @@
           <a href="addCertificate.html" class="i2">Add Certifcate</a>
           <a href="verifyCertificate.html" class="i2">Verify Certificate</a>
           <a href="About.html" class="i2">About</a>
+          <a href="Contacts.html" class="i2">Contact us</a>
           <a href="login.html" class="i2">Login</a>
           <a href="signUp.html" class="i2">SignUp</a>
         </div>
@@ -78,16 +82,20 @@
       </div>
       <input type="file" id="certificate-add-file" />
       <button id="upload_certificate">Upload Certificate</button>
+      <div class="certificateHash">Certificate Hash &nbsp;:&nbsp; <span id="hash"></span> </div>
+
     </div>
 
+    
     <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
-    <script type="module" src="index.js"></script>
+    <!-- <script type="module"src="dist/bundle.js"></script> -->
+    <script type="module"src="index.js"></script>
     <script>
-      var isadmin=false;
-      if (!isadmin) {
-  // Redirect to the protected page
-  window.location.href = '/login.html';
-} 
+//       var isadmin=true;
+//       if (!isadmin) {
+//   // Redirect to the protected page
+//   window.location.href = '/login.html';
+// } 
     </script>
   </body>
 </html>

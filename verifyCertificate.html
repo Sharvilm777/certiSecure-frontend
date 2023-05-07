@@ -24,6 +24,7 @@
           <a href="addCertificate.html" class="i2">Add Certifcate</a>
           <a href="verifyCertificate.html" class="i2">Verify Certificate</a>
           <a href="About.html" class="i2">About</a>
+          <a href="Contacts.html" class="i2">Contact us</a>
           <a href="login.html" class="i2">Login</a>
           <a href="signUp.html" class="i2">SignUp</a>
         </div>
@@ -36,16 +37,16 @@
     <div class="container" id="top">
       <div class="selectionContainer">
         <select id="user-type">
-          <option value="student">Student</option>
+          <option value="student">Faculty</option>
           <option value="employee">Employee</option>
         </select>
       
       <div id="form-container">
         <form class="formContent">
-          <label for="student-name">Student Name:</label>
+          <label for="student-name">Faculty Name:</label>
           <input type="text" id="student-name" name="studentName" required="true">
 
-          <label for="student-id">Student ID:</label>
+          <label for="student-id">Faculty ID:</label>
           <input type="text" id="student-id" name="studentId" required="true">
 
           <button id="submitBtn" type="submit">Submit</button>
@@ -58,6 +59,7 @@
       </div>
       <input type="file" id="certificate-verify-file" />
       <button id="verify_btn">Verify Certificate</button>
+      <div class="certificateHash">Certificate Hash &nbsp;:&nbsp; <span id="hash"></span> </div>
       <p id="result"></p>
       </div>
     </div>
