@@ -21,6 +21,13 @@ loginBtn.addEventListener("click", async (e) => {
     );
     const result = await response.json();
     console.log(result);
+    let authToken = result.authToken;
+    localStorage.setItem("authToken", authToken);
+    alert("User Logged IN Succesfully");
+    setTimeout(() => {
+      baseUrl = "https://transcendent-snickerdoodle-40ccb7.netlify.app";
+      location.href = `${baseUrl}/index.html`;
+    }, 3000);
   } catch (error) {
     console.log(error);
   }

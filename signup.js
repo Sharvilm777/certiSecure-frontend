@@ -28,7 +28,14 @@ signUpBtn.addEventListener("click", async (e) => {
     );
     const result = await response.json();
     console.log(result);
+    baseUrl = "https://transcendent-snickerdoodle-40ccb7.netlify.app";
+    location.href = `${baseUrl}/login.html`;
   } catch (error) {
     console.log(error);
   }
 });
+// signUpBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   let baseURl = "http://localhost:5500/client";
+//   location.href = `${baseURl}/login.html`;
+// });
