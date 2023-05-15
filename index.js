@@ -9,7 +9,7 @@ const web3 = new Web3(
 web3.eth.net.getId().then(console.log);
 // 0x994b342dd87fc825f66e51ffa3ef71ad818b6893;
 
-import MyContractABI from "../build/contracts/CertificateValidation.json" assert { type: "json" };
+import MyContractABI from "./contracts/CertificateValidation.json" assert { type: "json" };
 const abi = MyContractABI.abi;
 const address = "0x1a2309A89f39962Ff8EeAd46E0F827eE80ffF747";
 const certificateValidationContract = new web3.eth.Contract(abi, address);
