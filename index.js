@@ -91,7 +91,14 @@ async function storeCertificateHashOnBlockchain(certificateHash) {
         .addCertificate(certificateHash)
         .encodeABI(),
     };
-    await signData();
+    try {
+      await signData();
+    } catch (error) {
+      console.error(error);
+      alert(error);
+      return;
+    }
+
     const signedTx = await web3.eth.accounts.signTransaction(
       txParams,
       PRIVATE_KEY
@@ -138,6 +145,7 @@ const signData = async () => {
     console.log(signature);
   } catch (error) {
     console.error(error);
+    throw new Error("Signer declined the process");
   }
 };
 
