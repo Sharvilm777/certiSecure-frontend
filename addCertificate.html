@@ -91,11 +91,11 @@
     <!-- <script type="module"src="dist/bundle.js"></script> -->
     <script type="module"src="index.js"></script>
     <script>
-//       var isadmin=true;
-//       if (!isadmin) {
-//   // Redirect to the protected page
-//   window.location.href = '/login.html';
-// } 
+      const isadmin = localStorage.getItem('role');
+      if (!(isadmin==='admin')) {
+  // Redirect to the protected page
+  window.location.href = '/login.html';
+} 
     </script>
   </body>
 </html>

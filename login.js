@@ -1,7 +1,7 @@
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const loginBtn = document.getElementById("loginBtn");
-import jwtDecode from "jwt-decode";
+// import jwtDecode from "jwt-decode";
 loginBtn.addEventListener("click", async (e) => {
   e.preventDefault();
   const data = {
@@ -20,16 +20,14 @@ loginBtn.addEventListener("click", async (e) => {
       }
     );
     const result = await response.json();
-    console.log(result);
+    console.log(result.role);
     let authToken = result.authToken;
-    const { role } = jwtDecode(authToken);
-    console.log(role);
     localStorage.setItem("authToken", authToken);
-    localStorage.setItem("role", role);
+    localStorage.setItem("role", result.role);
     alert("User Logged IN Succesfully");
     setTimeout(() => {
-      baseUrl = "https://transcendent-snickerdoodle-40ccb7.netlify.app";
-      location.href = `${baseUrl}/index.html`;
+      // baseUrl = "https://transcendent-snickerdoodle-40ccb7.netlify.app";
+      window.location.href = "/index.html";
     }, 3000);
   } catch (error) {
     console.log(error);

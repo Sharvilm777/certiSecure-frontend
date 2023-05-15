@@ -28,8 +28,8 @@ signUpBtn.addEventListener("click", async (e) => {
     );
     const result = await response.json();
     console.log(result);
-    baseUrl = "https://transcendent-snickerdoodle-40ccb7.netlify.app";
-    location.href = `${baseUrl}/login.html`;
+    // baseUrl = "https://transcendent-snickerdoodle-40ccb7.netlify.app";
+    window.location.href = "/login.html";
   } catch (error) {
     console.log(error);
   }
