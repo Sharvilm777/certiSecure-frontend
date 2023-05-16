@@ -154,7 +154,7 @@ async function sendHashToDB(certificateHash, transactionHash) {
     T_hash: transactionHash,
   };
   let response = await fetch(
-    "http://localhost:8080/certificate/addCertificate",
+    "https://certisecure-backend.up.railway.app/certificate/addCertificate",
     {
       method: "POST",
       headers: {
