@@ -7,7 +7,6 @@ const web3 = new Web3(
   )
 );
 web3.eth.net.getId().then(console.log);
-// 0x994b342dd87fc825f66e51ffa3ef71ad818b6893;
 
 import MyContractABI from "./contracts/CertificateValidation.json" assert { type: "json" };
 const abi = MyContractABI.abi;
@@ -16,7 +15,6 @@ const certificateValidationContract = new web3.eth.Contract(abi, address);
 const hash = document.getElementById("hash");
 const PRIVATE_KEY =
   "82abe18cb5f6d7b4ebfb176aa6b88fe8ae1078642aaba52482ae4d22ca5aa430";
-// console.log(certificateValidationContract);
 
 var walletAddress;
 async function connectMetamask() {
@@ -113,6 +111,7 @@ async function storeCertificateHashOnBlockchain(certificateHash) {
             hash,
             "\n Check Alchemy's Mempool to view the status of your transaction!"
           );
+          sendHashToDB(certificateHash, hash);
         } else {
           console.log(
             "❗Something went wrong while submitting your transaction:",
@@ -121,6 +120,7 @@ async function storeCertificateHashOnBlockchain(certificateHash) {
         }
       }
     );
+
     return true;
   } catch (error) {
     console.error(error);
@@ -148,6 +148,30 @@ const signData = async () => {
     throw new Error("Signer declined the process");
   }
 };
+async function sendHashToDB(certificateHash, transactionHash) {
+  let data = {
+    C_hash: certificateHash,
+    T_hash: transactionHash,
+  };
+  let response = await fetch(
+    "http://localhost:8080/certificate/addCertificate",
+    {
+      method: "POST",
+      headers: {
+        Authorization: "admin",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
+  let result = await response.json();
+  console.log(result);
+}
 
 const uploadBtn = document.getElementById("upload_certificate");
 uploadBtn.addEventListener("click", uploadCertificate);
+const LogoutBtn = document.getElementById("LogoutBtn");
+LogoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("authToken");
+  localStorage.removeItem("role");
+});

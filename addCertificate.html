@@ -54,6 +54,16 @@
       .certificateHash{
         margin-top: 10px;
       }
+      .show{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+      }
+      .show a{
+        color: white;
+        margin: 10px;
+      }
     </style>
   </head>
 
@@ -86,7 +96,11 @@
 
     </div>
 
-    
+
+    <div class="show"
+    ><a href="certificates.html">Show all Certificates</a>
+      <a href="transaction.html">Show all Transactions</a></div>
+      <button id="LogoutBtn">logout</button>
     <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
     <!-- <script type="module"src="dist/bundle.js"></script> -->
     <script type="module"src="index.js"></script>

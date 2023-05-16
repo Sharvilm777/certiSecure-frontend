@@ -4,7 +4,7 @@ const web3 = new Web3(
   )
 );
 web3.eth.net.getId().then(console.log);
-import MyContractABI from "../build/contracts/CertificateValidation.json" assert { type: "json" };
+import MyContractABI from "./contracts/CertificateValidation.json" assert { type: "json" };
 const abi = MyContractABI.abi;
 const address = "0x1a2309A89f39962Ff8EeAd46E0F827eE80ffF747";
 const certificateValidationContract = new web3.eth.Contract(abi, address);
@@ -15,7 +15,7 @@ const submitBtn = document.getElementById("submitBtn");
 const selectionContainer = document.querySelector(".selectionContainer");
 const verifyForm = document.querySelector(".verifyForm");
 let verifyBtn = document.getElementById("verify_btn");
-
+let name, id, role;
 async function verifyCertificate() {
   const certificateFile = document.getElementById("certificate-verify-file")
     .files[0];
@@ -26,10 +26,16 @@ async function verifyCertificate() {
     .verifyCertificate(certificateHash)
     .call();
   const resultElement = document.getElementById("result");
+  console.log(certificateIsValid);
   if (certificateIsValid) {
-    resultElement.innerText = "Certificate is valid";
+    sendDataToDB(role, name, id, "Success", certificateHash);
+    resultElement.innerHTML = `<p>Certificate is valid</p>
+  <img src="photos/verified.png" height="100px" width="100px"/>
+    `;
   } else {
-    resultElement.innerText = "Certificate is not valid";
+    sendDataToDB(role, name, id, "Failed", certificateHash);
+    resultElement.innerHTML = `<p>Certificate is not valid</p>
+    <img src="photos/failed.png" height="100px" width="100px"/>`;
   }
 }
 
@@ -47,18 +53,18 @@ async function calculateHash(file) {
     .join("");
   return "0x" + certificateHashHex;
 }
-
+let userType;
 userTypeSelect.addEventListener("change", () => {
-  const userType = userTypeSelect.value;
+  userType = userTypeSelect.value;
 
-  if (userType === "student") {
+  if (userType === "faculty") {
     formContainer.innerHTML = `
         <form class="formContent">
           <label for="student-name">Faculty Name:</label>
-          <input type="text" id="student-name" name="studentName" required>
+          <input type="text" id="faculty-name" name="studentName" required>
 
           <label for="student-id">Faculty ID:</label>
-          <input type="text" id="student-id" name="studentId" required>
+          <input type="text" id="faculty-id" name="studentId" required>
 
           <button id="submitBtn" type="submit">Submit</button>
         </form>
@@ -80,7 +86,16 @@ userTypeSelect.addEventListener("change", () => {
 formContainer.addEventListener("click", (event) => {
   if (event.target.matches("#submitBtn")) {
     event.preventDefault();
-
+    if (userType === "faculty") {
+      role = "faculty";
+      name = document.getElementById("faculty-name").value;
+      id = document.getElementById("faculty-id").value;
+    } else if (userType === "employee") {
+      role = "employee";
+      name = document.getElementById("employee-name").value;
+      id = document.getElementById("company-name").value;
+    }
+    console.log(role, name, id);
     // Hide selectionContainer
     selectionContainer.style.display = "none";
 
@@ -91,3 +106,24 @@ formContainer.addEventListener("click", (event) => {
 document.addEventListener("DOMContentLoaded", () => {
   verifyBtn.addEventListener("click", verifyCertificate);
 });
+async function sendDataToDB(role, name, id, status, hash) {
+  let data = {
+    role,
+    name,
+    id,
+    status,
+    hash,
+  };
+  let response = await fetch(
+    "https://certisecure-backend.up.railway.app/transac/addTransac",
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
+  let result = await response.json();
+  console.log(result);
+}

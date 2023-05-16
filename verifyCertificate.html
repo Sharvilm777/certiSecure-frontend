@@ -37,20 +37,12 @@
     <div class="container" id="top">
       <div class="selectionContainer">
         <select id="user-type">
-          <option value="student">Faculty</option>
+          <option value="faculty">Faculty</option>
           <option value="employee">Employee</option>
         </select>
       
       <div id="form-container">
-        <form class="formContent">
-          <label for="student-name">Faculty Name:</label>
-          <input type="text" id="student-name" name="studentName" required="true">
-
-          <label for="student-id">Faculty ID:</label>
-          <input type="text" id="student-id" name="studentId" required="true">
-
-          <button id="submitBtn" type="submit">Submit</button>
-        </form>
+       
       </div>
       </div>
 <div class="verifyForm displayNone">
@@ -59,10 +51,13 @@
       </div>
       <input type="file" id="certificate-verify-file" />
       <button id="verify_btn">Verify Certificate</button>
-      <div class="certificateHash">Certificate Hash &nbsp;:&nbsp; <span id="hash"></span> </div>
+      <div class="certificateHash">Certificate Hash &nbsp;:&nbsp; <span 
+   style="font-size: 12px;" 
+id="hash"></span> </div>
       <p id="result"></p>
       </div>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/web3@1.4.0/dist/web3.min.js"></script>
     <script type="module" src="verifyCertificate.js"></script>
     

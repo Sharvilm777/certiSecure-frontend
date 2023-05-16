@@ -20,15 +20,18 @@ loginBtn.addEventListener("click", async (e) => {
       }
     );
     const result = await response.json();
-    console.log(result.role);
-    let authToken = result.authToken;
-    localStorage.setItem("authToken", authToken);
-    localStorage.setItem("role", result.role);
-    alert("User Logged IN Succesfully");
-    setTimeout(() => {
-      // baseUrl = "https://transcendent-snickerdoodle-40ccb7.netlify.app";
-      window.location.href = "/index.html";
-    }, 3000);
+    // console.log(response.status);
+
+    if (response.status == 200) {
+      let authToken = result.authToken;
+      localStorage.setItem("authToken", authToken);
+      localStorage.setItem("role", result.role);
+      alert("User signed successfully");
+      setTimeout(() => {
+        // baseUrl = "https://transcendent-snickerdoodle-40ccb7.netlify.app";
+        window.location.href = "/index.html";
+      }, 3000);
+    }
   } catch (error) {
     console.log(error);
   }

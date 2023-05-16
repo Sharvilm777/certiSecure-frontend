@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Certificates - CertiSecure</title>
+    
+<link rel="Navbar StyleSheet" href="navbar.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        color: white;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #000000;
+        font-weight: bold;
+      }
+
+      tr:hover {
+        background-color: #000000;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="background">
+      
+        <div class="logo">
+          <a alt="logo"><img src="photos/logo.png" alt="Logo" id="logo" /></a>
+        </div>
+        <div class="nav">
+          <a href="index.html" class="i2">Home</a>
+          <a href="addCertificate.html" class="i2">Add Certifcate</a>
+          <a href="verifyCertificate.html" class="i2">Verify Certificate</a>
+          <a href="About.html" class="i2">About</a>
+          <a href="Contacts.html" class="i2">Contact us</a>
+          <a href="login.html" class="i2">Login</a>
+          <a href="signUp.html" class="i2">SignUp</a>
+        </div>
+      </div>
+      <div class="headTag"><a id="i3">CERTI-SECURE(Ensure Trust In Digital Certificates)</a></div>
+      
+    </ul>
+    <h1>Certificate Details</h1>
+    <table id="certificates-table">
+      <thead>
+        <tr>
+          <th>Added At</th>
+          <th>Certificate Hash</th>
+          <th>Transaction Hash</th>
+        </tr>
+      </thead>
+      <tbody id="certificate-table-body"></tbody>
+    </table>
+
+    <script src="getCertificates.js"></script>
+    <script>
+      const isadmin = localStorage.getItem("role");
+      if (!(isadmin === "admin")) {
+        // Redirect to the protected page
+        window.location.href = "/login.html";
+      }
+    </script>
+  </body>
+</html>

@@ -65,12 +65,12 @@ input[type="file"]::file-selector-button {
   flex-direction: column;
   width: 100%;
 }
-#student-name,
+#faculty-name,
 #employee-name {
   padding: 10px;
   margin: 10px;
 }
-#student-id,
+#faculty-id,
 #company-name {
   padding: 10px;
   margin: 10px;
@@ -82,4 +82,10 @@ input[type="file"]::file-selector-button {
   border-radius: 7px;
   width: 200px;
   margin-left: 100px;
+}
+#result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

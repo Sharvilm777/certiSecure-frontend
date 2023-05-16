@@ -6,15 +6,14 @@ const password = document.getElementById("password");
 
 signUpBtn.addEventListener("click", async (e) => {
   e.preventDefault();
-  console.log(name.value, dob.value, email.value, password.value);
-  console.log(typeof password.value);
+
   let data = {
     name: name.value,
     dob: dob.value,
     email: email.value,
     password: password.value,
   };
-  console.log(data.password);
+
   try {
     let response = await fetch(
       "https://certisecure-backend.up.railway.app/auth/signup",

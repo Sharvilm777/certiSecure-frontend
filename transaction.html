@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Transaction - Certisecure</title>
+    <link rel="Navbar StyleSheet" href="navbar.css" />
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        color: white;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #000000;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="background">
+      
+        <div class="logo">
+          <a alt="logo"><img src="photos/logo.png" alt="Logo" id="logo" /></a>
+        </div>
+        <div class="nav">
+          <a href="index.html" class="i2">Home</a>
+          <a href="addCertificate.html" class="i2">Add Certifcate</a>
+          <a href="verifyCertificate.html" class="i2">Verify Certificate</a>
+          <a href="About.html" class="i2">About</a>
+          <a href="Contacts.html" class="i2">Contact us</a>
+          <a href="login.html" class="i2">Login</a>
+          <a href="signUp.html" class="i2">SignUp</a>
+        </div>
+      </div>
+      <div class="headTag"><a id="i3">CERTI-SECURE(Ensure Trust In Digital Certificates)</a></div>
+      
+    </ul>
+    <table id="data-table">
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Name</th>
+          <th>ID</th>
+
+          <th>Status</th>
+          <th>Transaction Hash</th>
+          <th>Verified At</th>
+        </tr>
+      </thead>
+      <tbody id="data-body">
+        <!-- Table rows will be added dynamically -->
+      </tbody>
+    </table>
+
+    <script src="transaction.js"></script>
+    <script>
+      const isadmin = localStorage.getItem("role");
+      if (!(isadmin === "admin")) {
+        // Redirect to the protected page
+        window.location.href = "/login.html";
+      }
+    </script>
+  </body>
+</html>
