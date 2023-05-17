@@ -5,6 +5,7 @@ async function fetchCertificates() {
       {
         method: "GET",
         headers: {
+          "Access-Control-Allow-Origin": "*",
           Authorization: "admin",
           "content-type": "application/json",
         },

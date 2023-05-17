@@ -119,6 +119,7 @@ async function sendDataToDB(role, name, id, status, hash) {
     {
       method: "POST",
       headers: {
+        "Access-Control-Allow-Origin": "*",
         "content-type": "application/json",
       },
       body: JSON.stringify(data),

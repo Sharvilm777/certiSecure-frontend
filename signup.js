@@ -20,6 +20,7 @@ signUpBtn.addEventListener("click", async (e) => {
       {
         method: "POST",
         headers: {
+          "Access-Control-Allow-Origin": "*",
           "content-Type": "application/json",
         },
         body: JSON.stringify(data),

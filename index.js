@@ -158,6 +158,7 @@ async function sendHashToDB(certificateHash, transactionHash) {
     {
       method: "POST",
       headers: {
+        "Access-Control-Allow-Origin": "*",
         Authorization: "admin",
         "content-type": "application/json",
       },

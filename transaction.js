@@ -7,6 +7,7 @@ async function fetchData() {
         method: "GET",
         headers: {
           Authorization: "admin",
+          "Access-Control-Allow-Origin": "*",
           "content-type": "application/json",
         },
       }
