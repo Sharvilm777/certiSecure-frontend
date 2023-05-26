@@ -11,7 +11,7 @@ loginBtn.addEventListener("click", async (e) => {
   let deployedurl = "https://certisecure-backend.up.railway.app/auth/login";
   let localurl = "http://localhost:8080/auth/login";
   try {
-    let response = await fetch(localurl, {
+    let response = await fetch(deployedurl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
