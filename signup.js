@@ -4,7 +4,7 @@ const dob = document.getElementById("dob");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 
-signUpBtn.addEventListener("submit", async (e) => {
+signUpBtn.addEventListener("click", async (e) => {
   e.preventDefault();
 
   let data = {

@@ -2,7 +2,7 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const loginBtn = document.getElementById("loginBtn");
 // import jwtDecode from "jwt-decode";
-loginBtn.addEventListener("submit", async (e) => {
+loginBtn.addEventListener("click", async (e) => {
   e.preventDefault();
   const data = {
     email: email.value,
@@ -11,11 +11,9 @@ loginBtn.addEventListener("submit", async (e) => {
   let deployedurl = "https://certisecure-backend.up.railway.app/auth/login";
   let localurl = "http://localhost:8080/auth/login";
   try {
-    let response = await fetch(deployedurl, {
-      mode: "cors",
+    let response = await fetch(localurl, {
       method: "POST",
       headers: {
-        "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
