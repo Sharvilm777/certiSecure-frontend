@@ -31,6 +31,8 @@ console.log(web3.eth);
 
 async function uploadCertificate() {
   console.log("Control is here");
+  var image = document.getElementById("previewImage");
+  var previewText = document.getElementById("previewText");
   const certificateFile = document.getElementById("certificate-add-file")
     .files[0];
   const certificateHash = await calculateHash(certificateFile);
@@ -38,8 +40,14 @@ async function uploadCertificate() {
   const status = await storeCertificateHashOnBlockchain(certificateHash);
   if (status) {
     alert("Certificate uploaded successfully!");
+    uploadFile.value = null;
+    image.src = "";
+    previewText.style.display = "block";
   } else {
     alert("certificate is not uploaded");
+    uploadFile.value = null;
+    image.src = "";
+    previewText.style.display = "block";
   }
 }
 
@@ -63,14 +71,13 @@ async function storeCertificateHashOnBlockchain(certificateHash) {
     method: "eth_requestAccounts",
   });
   const walletAddress = accounts[0];
-  console.log(walletAddress);
 
   const isCertificateExists = await certificateValidationContract.methods
     .verifyCertificate(certificateHash)
     .call();
 
   if (isCertificateExists) {
-    console.error("Certificate already exists on the blockchain.");
+    alert("Certificate already exists on the blockchain.");
     return false;
   }
 
@@ -125,6 +132,7 @@ async function storeCertificateHashOnBlockchain(certificateHash) {
   } catch (error) {
     console.error(error);
     alert("Failed to store certificate hash on the blockchain.");
+    uploadFile.value = null;
     return false;
   }
 }
@@ -175,4 +183,61 @@ const LogoutBtn = document.getElementById("LogoutBtn");
 LogoutBtn.addEventListener("click", () => {
   localStorage.removeItem("authToken");
   localStorage.removeItem("role");
+});
+
+const uploadFile = document.getElementById("certificate-add-file");
+uploadFile.addEventListener("change", function previewImage(event) {
+  console.log("Change happened");
+  var file = event.target.files[0];
+  var reader = new FileReader();
+
+  reader.onload = function (event) {
+    var image = new Image();
+    image.src = event.target.result;
+
+    image.onload = function () {
+      var maxWidth = 200; // Maximum width for the preview image
+      var maxHeight = 400; // Maximum height for the preview image
+
+      // Calculate the aspect ratio of the image
+      var aspectRatio = image.width / image.height;
+
+      // Calculate the new dimensions to fit within the maximum width and height
+      var newWidth = maxWidth;
+      var newHeight = maxHeight;
+
+      if (aspectRatio > 1) {
+        newHeight = maxWidth / aspectRatio;
+      } else {
+        newWidth = maxHeight * aspectRatio;
+      }
+
+      // Create a canvas element to generate the preview image with the desired dimensions
+      var canvas = document.createElement("canvas");
+      canvas.width = newWidth;
+      canvas.height = newHeight;
+
+      // Draw the image onto the canvas
+      var context = canvas.getContext("2d");
+      context.drawImage(image, 0, 0, newWidth, newHeight);
+      var existingPreview = document.getElementById("previewImage");
+      if (existingPreview) {
+        existingPreview.parentNode.removeChild(existingPreview);
+      }
+
+      var previewImage = new Image();
+      previewImage.id = "previewImage";
+      previewImage.src = canvas.toDataURL("image/jpeg");
+
+      // Append the preview image to the container element
+      var previewContainer = document.getElementById("previewContainer");
+      previewContainer.appendChild(previewImage);
+
+      // Show/hide the preview text based on the presence of an image
+      var previewText = document.getElementById("previewText");
+      previewText.style.display = previewImage.src ? "none" : "block";
+    };
+  };
+
+  reader.readAsDataURL(file);
 });

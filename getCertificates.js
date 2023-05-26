@@ -1,16 +1,16 @@
 async function fetchCertificates() {
+  let deployedurl =
+    "https://certisecure-backend.up.railway.app/certificate/getCertificates";
+  let localurl = "http://localhost:8080/certificate/getCertificates";
   try {
-    const response = await fetch(
-      "https://certisecure-backend.up.railway.app/certificate/getCertificates",
-      {
-        method: "GET",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          Authorization: "admin",
-          "content-type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(deployedurl, {
+      method: "GET",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        Authorization: "admin",
+        "content-type": "application/json",
+      },
+    });
     const data = await response.json();
     return data.certificates;
   } catch (error) {

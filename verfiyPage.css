@@ -4,30 +4,27 @@
 body {
   /* background-image: url("photos/background_image.jpg"); */
   background-image: url("https://www.sagatraining.ca/wp-content/uploads/2018/10/background-images-for-login-form-8.jpg");
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 .container {
   font-size: larger;
   display: flex;
-
-  justify-content: center;
-
+  /* justify-content: center; */
   flex-direction: column;
-  background-color: #d6eaf8;
-  opacity: 85%;
-  padding: 50px;
+  padding: 0px;
   border-radius: 50px;
-  width: 400px;
-  height: 300px;
+  width: 1200px;
+  height: 100vh;
   margin: auto;
-  margin-top: 40px;
 }
 #certificate-verify-file {
   padding: 10px;
   border: 2px solid black;
   border-radius: 5px;
   font-size: medium;
+  margin-top: 20px;
+  margin-left: 24px;
 }
 #verify_btn {
   margin-top: 20px;
@@ -44,36 +41,43 @@ input[type="file"]::file-selector-button {
 }
 .heading {
   text-align: center;
-  font-size: larger;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .displayNone {
   display: none;
 }
 .selectionContainer {
-  position: relative;
-  display: inline-block;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 #user-type {
-  position: absolute;
-  top: -60px;
-  left: 0;
-  width: 100%;
+  width: 50%;
   padding: 10px;
+  margin-left: 30px;
 }
 .formContent {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin: 20px;
 }
 #faculty-name,
 #employee-name {
   padding: 10px;
-  margin: 10px;
+  margin: 20px;
+  width: 100%;
 }
 #faculty-id,
 #company-name {
   padding: 10px;
-  margin: 10px;
+  margin: 20px;
+  width: 100%;
 }
 #submitBtn {
   padding: 10px;
@@ -88,4 +92,26 @@ input[type="file"]::file-selector-button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #d6eaf8;
+  border-radius: 20px;
+  width: 300px;
+}
+#previewContainer {
+  height: 400px;
+  width: 320px;
+  border: 2px dashed rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: medium;
+}
+.upload-space {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.wraper {
+  display: flex;
+  justify-content: space-evenly;
 }

@@ -103,6 +103,62 @@ formContainer.addEventListener("click", (event) => {
     verifyForm.classList.remove("displayNone");
   }
 });
+const uploadFile = document.getElementById("certificate-verify-file");
+uploadFile.addEventListener("change", function previewImage(event) {
+  console.log("Change happened");
+  var file = event.target.files[0];
+  var reader = new FileReader();
+
+  reader.onload = function (event) {
+    var image = new Image();
+    image.src = event.target.result;
+
+    image.onload = function () {
+      var maxWidth = 200; // Maximum width for the preview image
+      var maxHeight = 400; // Maximum height for the preview image
+
+      // Calculate the aspect ratio of the image
+      var aspectRatio = image.width / image.height;
+
+      // Calculate the new dimensions to fit within the maximum width and height
+      var newWidth = maxWidth;
+      var newHeight = maxHeight;
+
+      if (aspectRatio > 1) {
+        newHeight = maxWidth / aspectRatio;
+      } else {
+        newWidth = maxHeight * aspectRatio;
+      }
+
+      // Create a canvas element to generate the preview image with the desired dimensions
+      var canvas = document.createElement("canvas");
+      canvas.width = newWidth;
+      canvas.height = newHeight;
+
+      // Draw the image onto the canvas
+      var context = canvas.getContext("2d");
+      context.drawImage(image, 0, 0, newWidth, newHeight);
+      var existingPreview = document.getElementById("previewImage");
+      if (existingPreview) {
+        existingPreview.parentNode.removeChild(existingPreview);
+      }
+
+      var previewImage = new Image();
+      previewImage.id = "previewImage";
+      previewImage.src = canvas.toDataURL("image/jpeg");
+
+      // Append the preview image to the container element
+      var previewContainer = document.getElementById("previewContainer");
+      previewContainer.appendChild(previewImage);
+
+      // Show/hide the preview text based on the presence of an image
+      var previewText = document.getElementById("previewText");
+      previewText.style.display = previewImage.src ? "none" : "block";
+    };
+  };
+
+  reader.readAsDataURL(file);
+});
 document.addEventListener("DOMContentLoaded", () => {
   verifyBtn.addEventListener("click", verifyCertificate);
 });

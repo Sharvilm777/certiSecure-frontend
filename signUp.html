@@ -37,22 +37,19 @@
       <div class="signup">
         <form>
           <label for="chk" aria-hidden="true">Sign up</label>
-          <input type="text" name="txt" placeholder="User name" id ="name"required="true" />
-          <input
-          id="dob"
-            type="date"
-            name="dob"
-            class="dobs"
-            placeholder="DOB"
-            required="true"
-          />
-          <input type="email" id ="email"name="email" placeholder="Email" required="true" />
+          <input type="text" name="txt" placeholder="User name" id ="name"required />
+         
+          <input type="email" id ="email"name="email" placeholder="Email" required />
           <input
             type="password"
             name="pswd"
             placeholder="Password"
-            required="true"
+            required
             id ="password"
+            minlength="8"
+        maxlength="20"
+        pattern="^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Za-z]).{8,}$"
+        title="Password must contain at least 8 characters, including one capital letter and one special character"
           />
 
           <button id="signUpBtn">Sign up</button>

@@ -1,65 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Certisecure - Verify certificate</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="HomePage.css" />
     <link rel="Navbar StyleSheet" href="navbar.css" />
     <link rel="stylesheet" href="verfiyPage.css">
-  </head>
-  <body>
+</head>
+
+<body>
     <ul class="background">
-      
+
         <div class="logo">
-          <a alt="logo"><img src="photos/logo.png" alt="Logo" id="logo" /></a>
+            <a alt="logo"><img src="photos/logo.png" alt="Logo" id="logo" /></a>
         </div>
         <div class="nav">
-          <a href="index.html" class="i2">Home</a>
-          <a href="addCertificate.html" class="i2">Add Certifcate</a>
-          <a href="verifyCertificate.html" class="i2">Verify Certificate</a>
-          <a href="About.html" class="i2">About</a>
-          <a href="Contacts.html" class="i2">Contact us</a>
-          <a href="login.html" class="i2">Login</a>
-          <a href="signUp.html" class="i2">SignUp</a>
+            <a href="index.html" class="i2">Home</a>
+            <a href="addCertificate.html" class="i2">Add Certifcate</a>
+            <a href="verifyCertificate.html" class="i2">Verify Certificate</a>
+            <a href="About.html" class="i2">About</a>
+            <a href="Contacts.html" class="i2">Contact us</a>
+            <a href="login.html" class="i2">Login</a>
+            <a href="signUp.html" class="i2">SignUp</a>
         </div>
-      </div>
-      <div class="headTag"><a id="i3">CERTI-SECURE(Ensure Trust In Digital Certificates)</a></div>
-      
+        </div>
+        <div class="headTag"><a id="i3">CERTI-SECURE(Ensure Trust In Digital Certificates)</a></div>
+
     </ul>
-  
+
 
     <div class="container" id="top">
-      <div class="selectionContainer">
-        <select id="user-type">
+        <div class="selectionContainer">
+            <select id="user-type">
           <option value="faculty">Faculty</option>
           <option value="employee">Employee</option>
         </select>
-      
-      <div id="form-container">
-       
-      </div>
-      </div>
-<div class="verifyForm displayNone">
-      <div class="heading">
-        <h3>Verify your certificate here</h3>
-      </div>
-      <input type="file" id="certificate-verify-file" />
-      <button id="verify_btn">Verify Certificate</button>
-      <div class="certificateHash">Certificate Hash &nbsp;:&nbsp; <span 
-   style="font-size: 12px;" 
-id="hash"></span> </div>
-      <p id="result"></p>
-      </div>
+
+            <div id="form-container">
+
+            </div>
+        </div>
+        <div class="verifyForm displayNone">
+            <div class="heading">
+                <h3>Verify your certificate here</h3>
+            </div>
+            <div class="wraper">
+                <div class="upload-space">
+                    <input type="file" id="certificate-verify-file" accept="image/*" />
+                    <button id="verify_btn">Verify Certificate</button>
+                    <div class="certificateHash">Certificate Hash &nbsp;:&nbsp; <span style="font-size: 12px;" id="hash"></span> </div>
+                    <p id="result"></p>
+                </div>
+                <div id="previewContainer">
+                    <span id="previewText">Preview of Certificate appear here</span>
+                    <img src="" id="previewImage">
+                </div>
+            </div>
+
+        </div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/web3@1.4.0/dist/web3.min.js"></script>
     <script type="module" src="verifyCertificate.js"></script>
-    
-  </body>
+    <script>
+        const token = localStorage.getItem('authToken');
+        console.log(token);
+        if (!token) {
+            // Redirect to the protected page
+            window.location.href = '/login.html';
+        }
+    </script>
+</body>
+
 </html>

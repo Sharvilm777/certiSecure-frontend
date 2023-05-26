@@ -25,20 +25,20 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 70vh;
+        height: 100vh;
         flex-direction: column;
       }
       #certificate-add-file {
         font-size: large;
         padding: 10px;
-        border: 2px solid black;
+        border: 2px solid rgb(255, 255, 255);
         border-radius: 5px;
       }
       #upload_certificate {
         margin-top: 20px;
         font-size: large;
         padding: 5px 10px;
-        border: 1px solid black;
+        border: 1px solid rgb(0, 0, 0);
         border-radius: 5px;
       }
       input[type="file"]::file-selector-button {
@@ -63,6 +63,14 @@
       .show a{
         color: white;
         margin: 10px;
+      }
+      #previewContainer{
+        height: 500px;
+        width: 350px;
+        border: 2px dashed rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     </style>
   </head>
@@ -90,10 +98,15 @@
       <div class="heading">
         <h3>Add certificate here</h3>
       </div>
-      <input type="file" id="certificate-add-file" />
+      <div id="previewContainer"> 
+         <span id="previewText" >Preview of Certificate appear here</span>
+         <img src=""  id="previewImage">
+      </div>
+      <div>
+      <input type="file" id="certificate-add-file" accept="image/*"  />
       <button id="upload_certificate">Upload Certificate</button>
       <div class="certificateHash">Certificate Hash &nbsp;:&nbsp; <span id="hash"></span> </div>
-
+    </div>
     </div>
 
 
@@ -102,7 +115,7 @@
       <a href="transaction.html">Show all Transactions</a></div>
       <button id="LogoutBtn">logout</button>
     <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
-    <!-- <script type="module"src="dist/bundle.js"></script> -->
+  
     <script type="module"src="index.js"></script>
     <script>
       const isadmin = localStorage.getItem('role');
@@ -110,6 +123,11 @@
   // Redirect to the protected page
   window.location.href = '/login.html';
 } 
+
+
+
+
+
     </script>
   </body>
 </html>

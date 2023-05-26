@@ -1,17 +1,17 @@
 // Fetch data from the backend
 async function fetchData() {
+  let deployedurl =
+    "https://certisecure-backend.up.railway.app/transac/getTransac";
+  let localurl = "http://localhost:8080/transac/getTransac";
   try {
-    const response = await fetch(
-      "https://certisecure-backend.up.railway.app/transac/getTransac",
-      {
-        method: "GET",
-        headers: {
-          Authorization: "admin",
-          "Access-Control-Allow-Origin": "*",
-          "content-type": "application/json",
-        },
-      }
-    ); // Replace with your API endpoint
+    const response = await fetch(deployedurl, {
+      method: "GET",
+      headers: {
+        Authorization: "admin",
+        "Access-Control-Allow-Origin": "*",
+        "content-type": "application/json",
+      },
+    });
     const data = await response.json();
     return data;
     console.log(data);
